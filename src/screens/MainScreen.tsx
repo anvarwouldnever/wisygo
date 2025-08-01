@@ -1,0 +1,51 @@
+import { StyleSheet, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Image } from 'expo-image';
+import { useScale } from '../hooks/useScale';
+import AnimatedText from './Main/AnimatedText';
+import AnimatedMicro from './Main/AnimatedMicro';
+import Topics from './Main/Topics';
+import * as Haptics from 'expo-haptics';
+
+const MainScreen = () => {
+
+    const { s } = useScale()
+
+    const [paw, setPaw] = useState<boolean>(false);
+    const [topic, setTopic] = useState<any>(null);
+    const [text, setText] = useState<string>();
+
+    useEffect(() => {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft);
+    }, [text])
+
+    return (
+        <View style={{flex: 1, backgroundColor: '#C4DF84', justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{width: '100%', height: 'auto', justifyContent: 'center', alignItems: 'center'}}>
+                <AnimatedText text={text} setText={setText} setPaw={setPaw} />   
+                
+                <Image source={require('./Main/staticAssets/wisy.png')} style={{ width: '100%', height: s(300) }} contentFit='contain' />
+    
+                {topic? <Topics setText={setText} /> : <AnimatedMicro setTopic={setTopic} setText={setText} paw={paw} setPaw={setPaw} />}
+            </View>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    triangle: {
+        width: 0,
+        height: 0,
+        backgroundColor: 'transparent',
+        borderStyle: 'solid',
+        borderLeftWidth: 10,
+        borderRightWidth: 10,
+        borderBottomWidth: 10,
+        borderLeftColor: 'transparent',
+        borderRightColor: 'transparent',
+        borderBottomColor: 'white',
+        transform: [{ rotate: '180deg' }],
+    }
+})
+
+export default MainScreen;
