@@ -51,7 +51,7 @@ const AnimatedMicro = ({ paw, setPaw, setText, setTopic }) => {
             <AnimatedTouchableOpacity onPress={() => press()} activeOpacity={1} style={[animatedMicro, { borderRadius: 100, backgroundColor: '#B3ABDB', justifyContent: 'center', alignItems: 'center', width: s(82), height: s(82)}]}>
                 {thinking? <AnimatedDots /> : <Image style={{width: s(42), height: s(42)}} source={microOn ? require('./staticAssets/microon.png') : require('./staticAssets/microoff.png')} contentFit='contain' />}
             </AnimatedTouchableOpacity>
-            {paw && <AnimatedPaw />}
+            {paw && <AnimatedPaw color={'light'} />}
             {microOn && !thinking && <Animated.Text entering={FadeIn.duration(300)} style={{color: '#504297', fontWeight: '300', position: 'absolute', alignSelf: 'center', bottom: -s(35), fontSize: s(14)}}>Tap again to send</Animated.Text>}
         </View>
     )

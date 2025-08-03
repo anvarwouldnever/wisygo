@@ -1,56 +1,43 @@
 import { View, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
 import Animated, { Easing, FadeIn, FadeOut } from 'react-native-reanimated';
-import { useScale } from '../../hooks/useScale';
+import { useScale } from '../../../../hooks/useScale';
 
-const AnimatedText = ({ setPaw, setText, text, stage, setTopic }) => {
+const AnimatedText = ({ setText, text, setStage, stage }) => {
 
     const { s } = useScale()
 
     const texts = [
-        'Hi there, friend! 👋 I’m Wisy the Panda!',
-        'Let’s go on a fun learning adventure together!',
-        'Can you say ‘Hello, Wisy!’ after you tap the button? 🎤 I can’t wait to hear your voice!',
-        'We’re back. What else do you want to explore?',
-        'Tap on the microphone button and tell me what other topics you like?'
+        'Let’s try dropping the ball now in space',
+        'Tap on the ball to drop it.',
+        'It’s because the gravity is much weaker in space',
+        'Do you want to explore something else?'
     ]
 
     useEffect(() => {
-        if (stage === 0) {
-            let i = 4;
-            setText(texts[3]);
-            setTopic(null)
-        
+        if (stage === 1) {
+            setText(texts[0])
+
+            setTimeout(() => {
+                setStage(2)
+                setText(null)
+            }, 2000);
+        } else if (stage === 3) {
+            let i = 3;
+            setText(texts[2])
+
             const interval = setInterval(() => {
                 setText(texts[i]);
-        
                 i++;
-        
+
                 if (i === texts.length) {
                     clearInterval(interval);
-                    setTimeout(() => setPaw(true), 2000);
                 }
-            }, 2000);
-        
-            return () => clearInterval(interval);
-        } else {
-            let i = 1;
-            setText(texts[0]);
-
-            const interval = setInterval(() => {
-                setText(texts[i]);
-
-                if (i === 2) {
-                    clearInterval(interval);
-                    setTimeout(() => setPaw(true), 2000);
-                }
-
-                i++;
             }, 2000);
 
             return () => clearInterval(interval);
         }
-    }, []);
+    }, [stage]);
 
     return (
         <View style={{width: '85%', height: 'auto', alignItems: 'center', justifyContent: 'center'}}>

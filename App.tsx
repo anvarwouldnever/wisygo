@@ -1,13 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { View } from 'react-native';
 import MainScreen from './src/screens/MainScreen';
+import Navigation from './src/navigation/Navigation';
 
 const App = () => {
     return (
-        <View style={{ flex: 1, backgroundColor: 'white'}}>
-            <MainScreen />
-            <StatusBar style='dark' />
-        </View>
+        <Navigation />
     );
 }
 

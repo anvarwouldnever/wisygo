@@ -2,18 +2,23 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useScale } from '../../hooks/useScale'
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+import { useNavigation } from '@react-navigation/native'
 
 const Topics = ({ setText }) => {
 
-    const { s } = useScale()
+    const { s } = useScale();
 
     const [show, setShow] = useState<boolean>(false);
 
+    const navigation = useNavigation();
+
     const press = () => {
         setShow(false)
+
         setTimeout(() => {
-            
-        }, 2000);
+            navigation.navigate('Topic')
+        }, 3000);
+
         setTimeout(() => {
             setText('Great choice! Have you ever heard of something called gravity?')
         }, 1000);

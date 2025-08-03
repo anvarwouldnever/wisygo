@@ -1,55 +1,32 @@
 import { View, StyleSheet } from 'react-native'
 import React, { useEffect } from 'react'
 import Animated, { Easing, FadeIn, FadeOut } from 'react-native-reanimated';
-import { useScale } from '../../hooks/useScale';
+import { useScale } from '../../../../hooks/useScale';
 
-const AnimatedText = ({ setPaw, setText, text, stage, setTopic }) => {
+const AnimatedText = ({ setText, text, stage }) => {
 
     const { s } = useScale()
 
     const texts = [
-        'Hi there, friend! 👋 I’m Wisy the Panda!',
-        'Let’s go on a fun learning adventure together!',
-        'Can you say ‘Hello, Wisy!’ after you tap the button? 🎤 I can’t wait to hear your voice!',
-        'We’re back. What else do you want to explore?',
-        'Tap on the microphone button and tell me what other topics you like?'
+        'Did you see how it landed on the ground? It’s because gravity on earth is strong',
+        'Let’s repeat, but now in a different environment.. Tap on the button',
     ]
 
     useEffect(() => {
-        if (stage === 0) {
-            let i = 4;
-            setText(texts[3]);
-            setTopic(null)
-        
-            const interval = setInterval(() => {
-                setText(texts[i]);
-        
-                i++;
-        
-                if (i === texts.length) {
-                    clearInterval(interval);
-                    setTimeout(() => setPaw(true), 2000);
-                }
-            }, 2000);
-        
-            return () => clearInterval(interval);
-        } else {
-            let i = 1;
-            setText(texts[0]);
-
-            const interval = setInterval(() => {
-                setText(texts[i]);
-
-                if (i === 2) {
-                    clearInterval(interval);
-                    setTimeout(() => setPaw(true), 2000);
-                }
-
-                i++;
-            }, 2000);
-
-            return () => clearInterval(interval);
-        }
+        let i = 1;
+        setText(texts[0])
+    
+        const interval = setInterval(() => {
+            setText(texts[i]);
+    
+            i++;
+    
+            if (i === texts.length) {
+                clearInterval(interval);
+            }
+        }, 2000);
+    
+        return () => clearInterval(interval);
     }, []);
 
     return (

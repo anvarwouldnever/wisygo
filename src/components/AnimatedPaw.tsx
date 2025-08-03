@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withTiming } from 'react-native-reanimated'
 import { useScale } from '../hooks/useScale';
 
-const AnimatedPaw = () => {
+const AnimatedPaw = ({ color }) => {
 
     const scale = useSharedValue(1);
 
@@ -22,11 +22,11 @@ const AnimatedPaw = () => {
 
     return (
         <Animated.Image
-            source={require('../../assets/paw.png')}
+            source={color === 'light'? require('../../assets/pawlight.png') : require('../../assets/pawdark.png')}
             style={[
                 {
-                    width: s(60),
-                    height: s(60),
+                    width: s(55),
+                    height: s(55),
                     position: 'absolute',
                     right: -s(20),
                     bottom: -s(15),
