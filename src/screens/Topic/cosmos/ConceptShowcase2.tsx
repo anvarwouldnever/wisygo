@@ -24,11 +24,13 @@ const ConceptShowcase2 = ({ text, setText }) => {
             { stage === 1 ? 
 
                 <Animated.View entering={undefined} exiting={FadeOut.duration(600)} style={{width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                    <AnimatedText stage={stage} text={text} setStage={setStage} setText={setText} />
-                        
-                    <Image source={require('../../Main/staticAssets/wisy.png')} style={{ width: '100%', height: s(300) }} contentFit='contain' />
+                    <View style={{ height: 'auto', width: '100%', justifyContent: 'center', alignItems: 'center', gap: s(10)}}>
+                        <AnimatedText stage={stage} text={text} setStage={setStage} setText={setText} />
+                            
+                        <Image source={require('../../Main/staticAssets/wisy.png')} style={{ width: '100%', height: vs(300) }} contentFit='contain' />
+                    </View>
 
-                    <View style={{width: s(152), height: s(56), marginTop: s(66)}} />
+                    <View style={{width: vs(152), height: vs(56), marginTop: vs(66)}} />
                 </Animated.View>
 
             : stage === 2 ? 
@@ -44,9 +46,11 @@ const ConceptShowcase2 = ({ text, setText }) => {
             : stage === 3 ?
 
                 <Animated.View key={stage} entering={FadeIn.duration(600)} style={{width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center'}}>
-                    <AnimatedText stage={stage} text={text} setStage={setStage} setText={setText} />
-                        
-                    <Image source={require('../../Main/staticAssets/wisy.png')} style={{ width: '100%', height: s(300) }} contentFit='contain' />
+                    <View style={{ height: 'auto', width: '100%', justifyContent: 'center', alignItems: 'center', gap: s(10)}}>
+                        <AnimatedText stage={stage} text={text} setStage={setStage} setText={setText} />
+                            
+                        <Image source={require('../../Main/staticAssets/wisy.png')} style={{ width: '100%', height: vs(300) }} contentFit='contain' />
+                    </View>
 
                     <ReturnHomeButon />
                 </Animated.View>

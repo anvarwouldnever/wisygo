@@ -10,11 +10,11 @@ const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpaci
 
 const AnimatedBall = ({ setText, setStage }) => {
 
-    const { s } = useScale()
+    const { s, vs } = useScale()
 
     const [balldrop, setBalldrop] = useState<boolean>(false)
 
-    const bottom = useSharedValue(s(280));
+    const bottom = useSharedValue(vs(280));
     const rotation = useSharedValue(0);
 
     const animatedStyle = useAnimatedStyle(() => {
@@ -53,8 +53,8 @@ const AnimatedBall = ({ setText, setStage }) => {
     };
 
     return (
-        <AnimatedTouchableOpacity onPress={() => handlePress()} activeOpacity={1} style={[animatedStyle, { width: s(65), height: s(65), justifyContent: 'center', alignItems: 'center', position: 'absolute' }]}>
-            <Image style={{ width: s(74), height: s(74) }} contentFit='contain' source={require('../../staticAssets/balldark.png')} />
+        <AnimatedTouchableOpacity onPress={() => handlePress()} activeOpacity={1} style={[animatedStyle, { width: vs(65), height: vs(65), justifyContent: 'center', alignItems: 'center', position: 'absolute' }]}>
+            <Image style={{ width: vs(74), height: vs(74) }} contentFit='contain' source={require('../../staticAssets/balldark.png')} />
             {!balldrop && <AnimatedPaw color={'light'} />}       
         </AnimatedTouchableOpacity>
     )

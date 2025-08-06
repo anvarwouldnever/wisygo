@@ -32,15 +32,19 @@ const TopicScreen = () => {
             : stage === 2 ? 
 
                 <Animated.View entering={FadeIn} style={{width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', backgroundColor: '#C4DF84'}}>
-                    <AnimatedText stage={stage} text={text} setText={setText} />
-                    
-                    <Image source={require('./Main/staticAssets/wisy.png')} style={{ width: '100%', height: s(300) }} contentFit='contain' />
+                    <View style={{ height: 'auto', width: '100%', justifyContent: 'center', alignItems: 'center', gap: s(10)}}>
+                        <AnimatedText stage={stage} text={text} setText={setText} />
+                        
+                        <Image source={require('./Main/staticAssets/wisy.png')} style={{ width: '100%', height: vs(300) }} contentFit='contain' />
+                    </View>
             
                     <Button setStage={setStage} />
                 </Animated.View>
 
             : stage === 3 ?
+
                 <ConceptShowcase2 text={text} setText={setText} /> : null
+                
             }
         </View>
     )

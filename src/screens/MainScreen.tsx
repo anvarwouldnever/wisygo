@@ -9,7 +9,7 @@ import * as Haptics from 'expo-haptics';
 
 const MainScreen = ({ route }) => {
 
-    const { s } = useScale()
+    const { s, vs } = useScale()
 
     const stage = route?.params?.stage
 
@@ -24,9 +24,11 @@ const MainScreen = ({ route }) => {
     return (
         <View style={{flex: 1, backgroundColor: '#C4DF84', justifyContent: 'center', alignItems: 'center'}}>
             <View style={{width: '100%', height: 'auto', justifyContent: 'center', alignItems: 'center'}}>
-                <AnimatedText setTopic={setTopic} stage={stage} text={text} setText={setText} setPaw={setPaw} />   
-                
-                <Image source={require('./Main/staticAssets/wisy.png')} style={{ width: '100%', height: s(300) }} contentFit='contain' />
+                <View style={{ height: 'auto', width: '100%', justifyContent: 'center', alignItems: 'center', gap: s(10),  }}>
+                    <AnimatedText setTopic={setTopic} stage={stage} text={text} setText={setText} setPaw={setPaw} />   
+                    
+                    <Image source={require('./Main/staticAssets/wisy.png')} style={{ width: '100%', height: vs(300) }} contentFit='contain' />
+                </View>
             
                 {topic? <Topics setText={setText} /> : <AnimatedMicro setTopic={setTopic} setText={setText} paw={paw} setPaw={setPaw} />}
             </View>

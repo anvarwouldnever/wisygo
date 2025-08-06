@@ -6,7 +6,7 @@ const AnimatedPaw = ({ color }) => {
 
     const scale = useSharedValue(1);
 
-    const { s } = useScale()
+    const { s, vs } = useScale()
 
     useEffect(() => {
         scale.value = withRepeat(
@@ -25,11 +25,11 @@ const AnimatedPaw = ({ color }) => {
             source={color === 'light'? require('../../assets/pawlight.png') : require('../../assets/pawdark.png')}
             style={[
                 {
-                    width: s(55),
-                    height: s(55),
+                    width: vs(55),
+                    height: vs(55),
                     position: 'absolute',
-                    right: -s(20),
-                    bottom: -s(15),
+                    right: -vs(20),
+                    bottom: -vs(15),
                     pointerEvents: 'none'
                 },
                 animatedStyle
