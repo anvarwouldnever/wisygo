@@ -5,12 +5,15 @@ import { useScale } from '../hooks/useScale';
 import { Image } from 'expo-image';
 import Modal from 'react-native-modal'
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const VerificationScreen = () => {
 
     const { s, vs } = useScale()
 
     const [modal, setModal] = useState<boolean>(false)
+
+    const navigation = useNavigation()
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', gap: vs(24) }}>
@@ -58,7 +61,10 @@ const VerificationScreen = () => {
 
                         <View style={{gap: vs(12), width: '100%'}}>
 
-                            <TouchableOpacity style={{height: vs(56), borderWidth: 1, width: '100%', borderColor: '#E5E5E5', borderRadius: 100, paddingHorizontal: vs(16), flexDirection: 'row', alignItems: 'center', gap: vs(8), justifyContent: 'space-between'}}>
+                            <TouchableOpacity onPress={() => { 
+                                setModal(false)
+                                navigation.navigate('CreateChild') 
+                            }} style={{height: vs(56), borderWidth: 1, width: '100%', borderColor: '#E5E5E5', borderRadius: 100, paddingHorizontal: vs(16), flexDirection: 'row', alignItems: 'center', gap: vs(8), justifyContent: 'space-between'}}>
                                 <View style={{ height: 'auto', alignItems: 'center', justifyContent: 'center', gap: vs(8), flexDirection: 'row'}}>
                                     <Ionicons name='logo-google' size={vs(24)} color={'black'} />
                                     <Text style={{fontSize: Platform.isPad? vs(16) : vs(14), fontWeight: '600', color: '#222222'}}>Open Gmail</Text>

@@ -8,7 +8,7 @@ export const getOnboardings = () => {
     const [onboardings, setOnboardings] = useState<any>()
 
     useEffect(() => {
-        const fetchDocs = async () => {
+        const fetchOnboardings = async () => {
             try {
                 const response = await GetOnboardings();
                 setOnboardings(response?.data?.data)
@@ -20,7 +20,7 @@ export const getOnboardings = () => {
             }
         };
     
-        fetchDocs();
+        fetchOnboardings();
     }, []);
 
     return { onboardings, loading, error };
